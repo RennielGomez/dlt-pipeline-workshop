@@ -8,7 +8,9 @@
 
 ## Answer:
      -2009-06-01 to 2009-07-01
-     ![alt text](<images/Question1 Answer.png>)
+
+     ![alt text](./images/Question1 Answer.png)
+
 ## Question 2: What proportion of trips are paid with credit card?
     -16.66%
     -26.66%
@@ -16,7 +18,8 @@
     -46.66%
 ## Answer:
     -26.66%
-    ![alt text](<images/Question 2 Answer.png>)
+
+    ![alt text](images/Question 2 Answer.png)
 ## Question 3: What is the total amount of money generated in tips?
     -$4,063.41
     -$6,063.41
@@ -24,4 +27,5 @@
     -$10,063.41
 ## Answer: 
     -$6,063.41
+
     [![alt text](https://github.com/RennielGomez/dlt-pipeline-workshop/blob/main/images/Question%202%20Answer.png)]
