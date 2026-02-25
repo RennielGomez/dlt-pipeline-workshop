@@ -1,0 +1,134 @@
+Pipeline Execution Summary
+==================================================
+
+Timestamp: 20260225_090654
+Pipeline Name: taxi_pipeline
+Destination: <dlt.destinations.duckdb(destination_type='duckdb', staging_dataset_name_layout='%s_staging', enable_dataset_name_normalization=True, info_tables_query_threshold=1000, truncate_tables_on_staging_destination_before_load=True, local_dir='C:\\Users\\czaira gomez\\Downloads\\data-engineering\\dlt data ingestion\\taxi_pipeline', pipeline_name='taxi_pipeline', pipeline_working_dir='C:\\Users\\czaira gomez\\.dlt\\pipelines\\taxi_pipeline', create_indexes=False)>
+
+Starting pipeline execution...
+--------------------------------------------------
+
+Pipeline Execution FAILED
+Exception Type: PipelineStepFailed
+Exception Message: Pipeline execution failed at `step=extract` when processing package with `load_id=1771981614.4203038` with exception:
+
+<class 'KeyboardInterrupt'>
+
+
+Caused By: KeyboardInterrupt: 
+
+Context: KeyboardInterrupt: 
+
+Full Traceback:
+--------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 484, in extract
+    self._extract_source(
+    ~~~~~~~~~~~~~~~~~~~~^
+        extract_step,
+        ^^^^^^^^^^^^^
+    ...<3 lines>...
+        refresh=refresh or self.refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 1345, in _extract_source
+    load_id = extract.extract(
+        source, max_parallel_items, workers, load_package_state_update=load_package_state_update
+    )
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\extract.py", line 487, in extract
+    self._extract_single_source(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        load_id,
+        ^^^^^^^^
+    ...<2 lines>...
+        workers=workers,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\extract.py", line 405, in _extract_single_source
+    for pipe_item in pipes:
+                     ^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\pipe_iterator.py", line 158, in __next__
+    pipe_item = self._get_source_item()
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\pipe_iterator.py", line 274, in _get_source_item
+    pipe_item = next(gen)
+  File "C:\Users\czaira gomez\Downloads\data-engineering\dlt data ingestion\taxi_pipeline\taxi_pipeline.py", line 24, in taxi_pipeline_rest_api_resource
+    for page in client.paginate("data_engineering_zoomcamp_api/"):
+                ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\sources\helpers\rest_client\client.py", line 279, in paginate
+    data = self.extract_response(response, data_selector)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\sources\helpers\rest_client\client.py", line 295, in extract_response
+    data: Any = jsonpath.find_values(data_selector, response.json())
+                ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\common\jsonpath.py", line 35, in find_values
+    path = compile_path(path)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\common\jsonpath.py", line 16, in compile_path
+    return _parse(s)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jsonpath_ng\ext\parser.py", line 176, in parse
+    return ExtentedJsonPathParser(debug=debug).parse(path)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jsonpath_ng\ext\parser.py", line 63, in __init__
+    super(ExtentedJsonPathParser, self).__init__(debug, lexer_class)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\jsonpath_ng\parser.py", line 48, in __init__
+    self.parser = ply.yacc.yacc(module=self,
+                  ~~~~~~~~~~~~~^^^^^^^^^^^^^
+                                debug=self.debug,
+                                ^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+                                start = start_symbol,
+                                ^^^^^^^^^^^^^^^^^^^^^
+                                errorlog = logger)
+                                ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\ply\yacc.py", line 3438, in yacc
+    lr = LRGeneratedTable(grammar, method, debuglog)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\ply\yacc.py", line 2135, in __init__
+    self.lr_parse_table()
+    ~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\ply\yacc.py", line 2548, in lr_parse_table
+    C = self.lr0_items()
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\ply\yacc.py", line 2220, in lr0_items
+    g = self.lr0_goto(I, x)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\ply\yacc.py", line 2192, in lr0_goto
+    g = self.lr0_closure(gs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\ply\yacc.py", line 2150, in lr0_closure
+    continue
+KeyboardInterrupt
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\czaira gomez\Downloads\data-engineering\dlt data ingestion\taxi_pipeline\taxi_pipeline.py", line 61, in <module>
+    load_info = pipeline.run(taxi_pipeline_rest_api_source())
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 224, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 272, in _wrap
+    return f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 748, in run
+    self.extract(
+    ~~~~~~~~~~~~^
+        data,
+        ^^^^^
+    ...<8 lines>...
+        loader_file_format=loader_file_format,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 224, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 178, in _wrap
+    rv = f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 164, in _wrap
+    return f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 272, in _wrap
+    return f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 507, in extract
+    raise PipelineStepFailed(
+    ...<5 lines>...
+    ) from exc
+dlt.pipeline.exceptions.PipelineStepFailed: Pipeline execution failed at `step=extract` when processing package with `load_id=1771981614.4203038` with exception:
+
+<class 'KeyboardInterrupt'>
+
+--------------------------------------------------

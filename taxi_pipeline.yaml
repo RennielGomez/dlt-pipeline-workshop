@@ -1,0 +1,12 @@
+pipeline_name: taxi_pipeline
+description: A pipeline to retrieve information about taxi data from dezoomcamp api and store it in duckdb database.
+url: "https://us-central1-dlthub-analytics.cloudfunctions.net/data_engineering_zoomcamp_api"
+format: json
+pagination:
+  type: offset
+  parameters:
+    offset: 0
+    limit: 1000
+  stop_on_empty: true
+storage:
+  type: duckdb

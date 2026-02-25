@@ -1,0 +1,134 @@
+Pipeline Execution Summary
+==================================================
+
+Timestamp: 20260225_095254
+Pipeline Name: taxi_pipeline
+Destination: <dlt.destinations.duckdb(destination_type='duckdb', staging_dataset_name_layout='%s_staging', enable_dataset_name_normalization=True, info_tables_query_threshold=1000, truncate_tables_on_staging_destination_before_load=True, local_dir='C:\\Users\\czaira gomez\\Downloads\\data-engineering\\dlt data ingestion\\taxi_pipeline', pipeline_name='taxi_pipeline', pipeline_working_dir='C:\\Users\\czaira gomez\\.dlt\\pipelines\\taxi_pipeline', create_indexes=False)>
+
+Starting pipeline execution...
+--------------------------------------------------
+
+Pipeline Execution FAILED
+Exception Type: PipelineStepFailed
+Exception Message: Pipeline execution failed at `step=extract` when processing package with `load_id=1771984374.8902261` with exception:
+
+<class 'dlt.common.exceptions.DictValidationException'>
+Path `new_table/taxi_pipeline_rest_api_resource/columns[rate_code]`: field `data_type=integer` is not one of: ['text', 'double', 'bool', 'timestamp', 'bigint', 'binary', 'json', 'decimal', 'wei', 'date', 'time']
+
+Caused By: DictValidationException: Path `new_table/taxi_pipeline_rest_api_resource/columns[rate_code]`: field `data_type=integer` is not one of: ['text', 'double', 'bool', 'timestamp', 'bigint', 'binary', 'json', 'decimal', 'wei', 'date', 'time']
+
+Context: DictValidationException: Path `new_table/taxi_pipeline_rest_api_resource/columns[rate_code]`: field `data_type=integer` is not one of: ['text', 'double', 'bool', 'timestamp', 'bigint', 'binary', 'json', 'decimal', 'wei', 'date', 'time']
+
+Full Traceback:
+--------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 484, in extract
+    self._extract_source(
+    ~~~~~~~~~~~~~~~~~~~~^
+        extract_step,
+        ^^^^^^^^^^^^^
+    ...<3 lines>...
+        refresh=refresh or self.refresh,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 1345, in _extract_source
+    load_id = extract.extract(
+        source, max_parallel_items, workers, load_package_state_update=load_package_state_update
+    )
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\extract.py", line 487, in extract
+    self._extract_single_source(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        load_id,
+        ^^^^^^^^
+    ...<2 lines>...
+        workers=workers,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\extract.py", line 417, in _extract_single_source
+    extractors[item_format].write_items(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        resource, pipe_item.item, pipe_item.meta
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\extractors.py", line 153, in write_items
+    self._write_to_static_table(resource, table_name, items, meta)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\extractors.py", line 233, in _write_to_static_table
+    items = self._compute_and_update_tables(resource, table_name, items, meta)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\extractors.py", line 263, in _compute_and_update_tables
+    computed_tables = self._compute_tables(resource, items, meta)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\extractors.py", line 244, in _compute_tables
+    root_table_schema = resource.compute_table_schema(items, meta)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\resource.py", line 544, in compute_table_schema
+    table_schema = super().compute_table_schema(item, meta)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\extract\hints.py", line 298, in compute_table_schema
+    validate_dict_ignoring_xkeys(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        spec=TTableSchema,
+        ^^^^^^^^^^^^^^^^^^
+        doc=table_schema,
+        ^^^^^^^^^^^^^^^^^
+        path=f"new_table/{self.name}",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\common\validation.py", line 229, in validate_dict
+    verify_prop(pk, pv, allowed_props[pk])
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\common\validation.py", line 182, in verify_prop
+    verify_prop(f"{pk}[{d_k}]", d_v, d_v_t)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\common\validation.py", line 150, in verify_prop
+    validate_dict(t, pv, f"{path}/{pk}", filter_f, validator_f)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\common\validation.py", line 229, in validate_dict
+    verify_prop(pk, pv, allowed_props[pk])
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\common\validation.py", line 90, in verify_prop
+    verify_prop(pk, pv, union_types[0])
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\common\validation.py", line 127, in verify_prop
+    raise DictValidationException(
+        f"field `{pk}={pv}` is not one of: {a_l}", path, t, pk, pv
+    )
+dlt.common.exceptions.DictValidationException: Path `new_table/taxi_pipeline_rest_api_resource/columns[rate_code]`: field `data_type=integer` is not one of: ['text', 'double', 'bool', 'timestamp', 'bigint', 'binary', 'json', 'decimal', 'wei', 'date', 'time']
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\czaira gomez\Downloads\data-engineering\dlt data ingestion\taxi_pipeline\taxi_pipeline.py", line 56, in <module>
+    load_info = pipeline.run(taxi_pipeline_rest_api_source())
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 224, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 272, in _wrap
+    return f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 748, in run
+    self.extract(
+    ~~~~~~~~~~~~^
+        data,
+        ^^^^^
+    ...<8 lines>...
+        loader_file_format=loader_file_format,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 224, in _wrap
+    step_info = f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 178, in _wrap
+    rv = f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 164, in _wrap
+    return f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 272, in _wrap
+    return f(self, *args, **kwargs)
+  File "C:\Users\czaira gomez\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\dlt\pipeline\pipeline.py", line 507, in extract
+    raise PipelineStepFailed(
+    ...<5 lines>...
+    ) from exc
+dlt.pipeline.exceptions.PipelineStepFailed: Pipeline execution failed at `step=extract` when processing package with `load_id=1771984374.8902261` with exception:
+
+<class 'dlt.common.exceptions.DictValidationException'>
+Path `new_table/taxi_pipeline_rest_api_resource/columns[rate_code]`: field `data_type=integer` is not one of: ['text', 'double', 'bool', 'timestamp', 'bigint', 'binary', 'json', 'decimal', 'wei', 'date', 'time']
+--------------------------------------------------

@@ -1,0 +1,17 @@
+Pipeline Execution Summary
+==================================================
+
+Timestamp: 20260225_095730
+Pipeline Name: taxi_pipeline
+Destination: <dlt.destinations.duckdb(destination_type='duckdb', staging_dataset_name_layout='%s_staging', enable_dataset_name_normalization=True, info_tables_query_threshold=1000, truncate_tables_on_staging_destination_before_load=True, local_dir='C:\\Users\\czaira gomez\\Downloads\\data-engineering\\dlt data ingestion\\taxi_pipeline', pipeline_name='taxi_pipeline', pipeline_working_dir='C:\\Users\\czaira gomez\\.dlt\\pipelines\\taxi_pipeline', create_indexes=False)>
+
+Starting pipeline execution...
+--------------------------------------------------
+
+Pipeline Execution Details:
+Pipeline taxi_pipeline load step completed in 2.05 seconds
+1 load package(s) were loaded to destination duckdb and into dataset nyc_taxi_data
+The duckdb destination used duckdb:///C:\Users\czaira gomez\Downloads\data-engineering\dlt data ingestion\taxi_pipeline\taxi_pipeline.duckdb location to store data
+Load package 1771984650.2318296 is LOADED and contains no failed jobs
+
+Pipeline completed successfully!
