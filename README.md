@@ -24,4 +24,4 @@
     -$10,063.41
 ## Answer: 
     -$6,063.41
-    ![alt text](./images/Question1 Answer.png)
+    [![alt text](https://github.com/RennielGomez/dlt-pipeline-workshop/blob/main/images/Question%202%20Answer.png)]
