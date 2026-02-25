@@ -24,4 +24,4 @@
     -$10,063.41
 ## Answer: 
     -$6,063.41
-    ![alt text](<images/Question 3 Answer.png>)
+    ![alt text](<./images/Question 3 Answer.png>)
